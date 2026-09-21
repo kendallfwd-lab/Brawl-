@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 420">
+<defs>
+  <linearGradient id="armor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffd54a"/><stop offset=".55" stop-color="#ff962f"/><stop offset="1" stop-color="#ef5f25"/></linearGradient>
+  <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3fe9ff"/><stop offset="1" stop-color="#2087ff"/></linearGradient>
+  <linearGradient id="gun" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#6d77ca"/><stop offset="1" stop-color="#2b285f"/></linearGradient>
+  <filter id="shadow"><feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="#071735" flood-opacity=".55"/></filter>
+</defs>
+<g filter="url(#shadow)" stroke="#111b48" stroke-width="10" stroke-linejoin="round">
+  <ellipse cx="182" cy="388" rx="92" ry="17" fill="#071735" opacity=".38" stroke="none"/>
+  <path d="M131 284l-30 75 45 23 32-70z" fill="#27366e"/><path d="M219 286l36 69-41 29-38-69z" fill="#27366e"/>
+  <path d="M95 344l59 10-10 40-73-5z" fill="#ff9c31"/><path d="M212 356l60-15 17 39-71 18z" fill="#ff9c31"/>
+  <path d="M105 172l43-35 70 2 50 43-13 111-64 43-72-31z" fill="url(#armor)"/>
+  <path d="M123 191l36 20-12 63-44 20-30-49z" fill="#2e9dff"/>
+  <path d="M230 184l-27 28 12 62 47 18 27-50z" fill="#2e9dff"/>
+  <path d="M132 84l48-35 60 22 24 61-34 61-70 8-49-48z" fill="#ff9d2d"/>
+  <path d="M146 103l41-27 43 17 15 43-25 32-55 3-34-34z" fill="#18265b"/>
+  <path d="M163 112h65v31h-65z" rx="10" fill="url(#blue)" stroke-width="7"/>
+  <path d="M160 54l24-37 12 34 32-18-12 39" fill="none" stroke="#50edff" stroke-width="13" stroke-linecap="round"/>
+  <path d="M71 181l-41 21 16 52 52-17 4-42z" fill="#ff9b2f"/>
+  <path d="M54 197l-19-25-20 22 20 33z" fill="#26346b"/>
+  <g transform="translate(248 143)">
+    <path d="M0 31l69-37 39 21-2 48-65 39L7 79z" fill="url(#gun)"/>
+    <path d="M74 0l42 12 12 25-18 31-42-8z" fill="#2d316f"/>
+    <path d="M103 19h39v33h-39z" rx="8" fill="#ff9d31"/>
+    <path d="M134 26h29v19h-29z" fill="#ffe85a" stroke-width="7"/>
+    <path d="M25 45l43-23 19 13-5 20-43 25z" fill="#525fbb" stroke-width="6"/>
+  </g>
+</g>
+</svg>

@@ -1,0 +1,1 @@
+export default function HealthBar({ value, max, compact = false }) { const pct = Math.max(0, Math.min(100, (value / max) * 100)); return <div className={`health-bar ${compact ? 'compact' : ''}`}><span style={{ width: `${pct}%` }}/></div>; }

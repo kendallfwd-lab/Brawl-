@@ -1,0 +1,244 @@
+{
+  "name": "NEON BRAWL - Score Rank",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "neon-brawl-score",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "1",
+      "name": "Webhook - Match Result",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "neon-brawl-score"
+    },
+    {
+      "parameters": {
+        "jsCode": "const d = $json.body ?? $json;\nconst score = Number(d.score || 0);\nconst valid = Boolean(d.player && d.brawler && Number.isFinite(score));\nlet rank = 'ROOKIE';\nif (score >= 3000) rank = 'ARENA LEGEND'; else if (score >= 2000) rank = 'NEON ELITE'; else if (score >= 1000) rank = 'BRAWLER'; else if (score >= 500) rank = 'FIGHTER';\nreturn [{ json: { ...d, score, valid, rank, bonusXp: Math.max(25, Math.round(score / 12)), achievement: score >= 2000 ? 'Arena Dominator' : 'Arena Fighter' } }];"
+      },
+      "id": "2",
+      "name": "Validate & Calculate Rank",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        240,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "valid-check",
+              "leftValue": "={{ $json.valid }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "3",
+      "name": "IF - Payload Valid",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        500,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "s1",
+              "name": "success",
+              "value": true,
+              "type": "boolean"
+            },
+            {
+              "id": "s2",
+              "name": "rank",
+              "value": "={{ $json.rank }}",
+              "type": "string"
+            },
+            {
+              "id": "s3",
+              "name": "achievement",
+              "value": "={{ $json.achievement }}",
+              "type": "string"
+            },
+            {
+              "id": "s4",
+              "name": "bonusXp",
+              "value": "={{ $json.bonusXp }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4",
+      "name": "Set - Success Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        760,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "5",
+      "name": "Respond - Success",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1010,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e1",
+              "name": "success",
+              "value": false,
+              "type": "boolean"
+            },
+            {
+              "id": "e2",
+              "name": "error",
+              "value": "Payload inválido: player, brawler y score son obligatorios.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "6",
+      "name": "Set - Invalid Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        760,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {
+          "responseCode": 400
+        }
+      },
+      "id": "7",
+      "name": "Respond - Invalid",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1010,
+        120
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook - Match Result": {
+      "main": [
+        [
+          {
+            "node": "Validate & Calculate Rank",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate & Calculate Rank": {
+      "main": [
+        [
+          {
+            "node": "IF - Payload Valid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF - Payload Valid": {
+      "main": [
+        [
+          {
+            "node": "Set - Success Response",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Set - Invalid Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set - Success Response": {
+      "main": [
+        [
+          {
+            "node": "Respond - Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set - Invalid Response": {
+      "main": [
+        [
+          {
+            "node": "Respond - Invalid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "d3d9985e-02d4-4d8d-a2ee-123456789abc",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": []
+}

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 240"><defs>
+ <linearGradient id="armor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FFB5EC"/><stop offset=".28" stop-color="#FF48CA"/><stop offset="1" stop-color="#A63DCC"/></linearGradient>
+ <linearGradient id="armor2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FF48CA"/><stop offset="1" stop-color="#A63DCC"/></linearGradient>
+ <linearGradient id="visor" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#FFF0FC"/><stop offset="1" stop-color="#FFB5EC"/></linearGradient>
+ <linearGradient id="gun" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#6A66B8"/><stop offset="1" stop-color="#302056"/></linearGradient>
+ <linearGradient id="weapon" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#FFFFFF"/><stop offset=".3" stop-color="#FF78E2"/><stop offset="1" stop-color="#FF48CA"/></linearGradient>
+ <linearGradient id="blade" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#FFFFFF"/><stop offset=".35" stop-color="#FFB5EC"/><stop offset="1" stop-color="#FF48CA"/></linearGradient>
+ <radialGradient id="portraitBg" cx="50%" cy="35%"><stop stop-color="#FF48CA" stop-opacity=".52"/><stop offset=".62" stop-color="#302056"/><stop offset="1" stop-color="#09102E"/></radialGradient>
+</defs><g stroke="#302056" stroke-width="8" stroke-linejoin="round" stroke-linecap="round">
+<ellipse cx="110" cy="215" rx="66" ry="16" fill="#100C33" opacity=".36" stroke="none"/>
+<path d="M70 156 L50 211 L82 221 L103 170 Z" fill="#30295E"/><path d="M145 156 L169 208 L137 222 L115 171 Z" fill="#332A61"/>
+<path d="M52 203 L90 207 L85 229 L41 226 Z" fill="url(#armor2)"/><path d="M136 207 L176 200 L186 223 L142 230 Z" fill="url(#armor2)"/>
+<path d="M72 91 L102 72 L138 81 L157 117 L149 160 L119 181 L81 171 L62 136 Z" fill="url(#armor)"/>
+<path d="M81 101 L111 89 L141 101 L148 126 L130 149 L93 147 L73 127 Z" fill="#20204D"/>
+<path d="M83 55 L107 40 L136 50 L150 79 L137 106 L103 107 L79 88 Z" fill="url(#armor)"/>
+<path d="M91 66 L119 56 L140 69 L139 88 L123 97 L99 91 Z" fill="#151744"/>
+<rect x="97" y="71" width="34" height="13" rx="3" fill="url(#visor)" stroke="none"/>
+<path d="M59 109 L31 123 L39 157 L69 150 L77 121 Z" fill="url(#armor2)"/>
+<g transform="translate(143 98)"><path d="M0 20 L49 -4 L82 13 L80 47 L35 73 L5 58 Z" fill="url(#gun)"/><circle cx="72" cy="23" r="19" fill="#252052"/><circle cx="74" cy="23" r="11" fill="url(#weapon)" stroke="none"/><path d="M27 21 L57 8 L67 15 L61 30 L30 44 Z" fill="#FFFFFF" fill-opacity=".16" stroke="none"/></g>
+
+</g></svg>

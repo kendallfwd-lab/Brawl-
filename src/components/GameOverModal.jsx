@@ -1,0 +1,1 @@
+export default function GameOverModal() { return <div className="game-overlay"><div className="pause-card"><span className="eyebrow">RESULTADO</span><h2>CALCULANDO...</h2><p>Procesando estadísticas de la arena.</p><div className="loader-orb small"/></div></div>; }
